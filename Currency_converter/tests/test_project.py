@@ -38,4 +38,3 @@ def test_convert_currency(monkeypatch):
     monkeypatch.setattr('requests.get', mock_get)
     assert convert_currency('USD', 'EUR', 100) == 85.0
 
-# Additional test cases can be added for different currency pairs
