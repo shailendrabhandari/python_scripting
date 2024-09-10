@@ -50,6 +50,10 @@ This project is a Python-based currency converter that allows users to convert c
 
 6. **Update API Key**:
    - In the file `api.py`, replace `your_api_key_here` with your actual API key from CurrencyLayer.
+   - Free Forex API (Totally Free) I used this API
+   - URL: [Free Forex API](https://www.exchangerate-api.com/)
+
+
 
 ## **Usage**
 

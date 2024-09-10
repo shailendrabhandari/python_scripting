@@ -1,7 +1,7 @@
 import requests
 
 API_URL = "http://apilayer.net/api/live"
-API_KEY = "f479d95cf436f4e67446a015f25284ec"
+API_KEY = "you_api_key_here"###
 VALID_CURRENCIES = ["USD", "EUR", "GBP", "INR", "AUD", "CAD", "SGD", "JPY", "CNY", "CHF"]
 
 # Function to get a single exchange rate
