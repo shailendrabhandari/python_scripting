@@ -133,7 +133,7 @@ pip install -r requirements.txt
 
 ## **License**
 
-This project is licensed under the MIT License.
+This project is licensed under the Apache License Version2.0.
 
 ---
 
@@ -144,4 +144,3 @@ This project is licensed under the MIT License.
 - Store and load conversion history in a file.
 
 ---
-
