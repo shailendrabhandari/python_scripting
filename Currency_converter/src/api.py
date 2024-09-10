@@ -4,28 +4,50 @@ API_URL = "http://apilayer.net/api/live"
 API_KEY = "f479d95cf436f4e67446a015f25284ec"
 VALID_CURRENCIES = ["USD", "EUR", "GBP", "INR", "AUD", "CAD", "SGD", "JPY", "CNY", "CHF"]
 
+# Function to get a single exchange rate
 def get_conversion_rate(from_currency, to_currency):
-    if from_currency not in VALID_CURRENCIES or to_currency not in VALID_CURRENCIES:
-        raise ValueError("Invalid currency code.")
-
     params = {
         'access_key': API_KEY,
         'currencies': to_currency,
         'source': from_currency,
         'format': 1
     }
+    response = requests.get(API_URL, params=params)
+    
+    if response.status_code != 200:
+        raise Exception(f"Error fetching data from API: {response.status_code}")
+    
+    data = response.json()
+    
+    # Check for error in the response
+    if 'error' in data:
+        raise Exception(f"API Error: {data['error']}")
+    
+    rate_key = f"{from_currency}{to_currency}"
+    return data['quotes'].get(rate_key)
 
+# Function to get exchange rates for multiple currencies
+def get_multiple_exchange_rates(from_currency, to_currencies):
+    """
+    Fetch exchange rates from 'from_currency' to multiple 'to_currencies'.
+    """
+    currencies = ",".join(to_currencies)
+    params = {
+        'access_key': API_KEY,
+        'currencies': currencies,
+        'source': from_currency,
+        'format': 1
+    }
     response = requests.get(API_URL, params=params)
 
     if response.status_code != 200:
-        print(f"Failed to fetch data: {response.status_code}, {response.text}")
-        raise Exception("Error fetching data from API")
+        raise Exception(f"Error fetching data from API: {response.status_code}")
 
     data = response.json()
-
+    
+    # Check for error in the response
     if 'error' in data:
-        print(f"Error in response: {data['error']}")
-        raise Exception("API returned an error.")
+        raise Exception(f"API Error: {data['error']}")
 
-    rate_key = f"{from_currency}{to_currency}"
-    return data['quotes'].get(rate_key)
+    rates = {f"{from_currency}{to_currency}": data['quotes'].get(f"{from_currency}{to_currency}") for to_currency in to_currencies}
+    return rates
