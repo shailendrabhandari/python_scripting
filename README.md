@@ -1,7 +1,7 @@
 
-# **Currency Converter Project**
+# **Currency Converter**
 
-This project is a Python-based currency converter that allows users to convert currencies in real-time using the CurrencyLayer API. The project now includes additional features such as displaying country flags, comparing multiple currencies at once, and allowing the user to perform continuous conversions in a loop.
+This project is a Python-based currency converter that allows users to convert currencies in real time using the CurrencyLayer API. It includes additional features such as displaying country flags, comparing multiple currencies at once, and allowing the user to perform continuous conversions in a loop.
 
 ## **Features**
 - **Real-Time Currency Conversion**: Convert any amount from one currency to another using live exchange rates.
